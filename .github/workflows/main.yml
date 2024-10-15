@@ -15,9 +15,9 @@ jobs:
           sudo apt update
           sudo apt upgrade -y
 
-      - name: Create root user
+      - name: Create a new user (customuser)
         run: |
-          sudo useradd -m -s /bin/bash -p $(openssl passwd -1 '60110777') root
+          sudo useradd -m -s /bin/bash -p $(openssl passwd -1 '60110777') customuser
 
       - name: Install tmate
         run: |
